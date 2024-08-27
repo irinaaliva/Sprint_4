@@ -1,6 +1,5 @@
-package page_obj;
+package pageObj;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class ScooterOrderPageOne {
@@ -24,11 +23,11 @@ public class ScooterOrderPageOne {
         driver.findElement(elementOfMetroList).click();
     }
 
-    public void setOrderPageOne(String name, String surname, String address, int metro_value, String phone) {
+    public void setOrderPageOne(String name, String surname, String address, int metroValue, String phone) {
         driver.findElement(nameField).sendKeys(name);
         driver.findElement(surnameField).sendKeys(surname);
         driver.findElement(addressField).sendKeys(address);
-        selectMetroStation(metro_value);
+        selectMetroStation(metroValue);
         driver.findElement(phoneNumberField).sendKeys(phone);
     }
 

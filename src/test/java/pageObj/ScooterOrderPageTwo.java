@@ -1,4 +1,4 @@
-package page_obj;
+package pageObj;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,7 +8,7 @@ public class ScooterOrderPageTwo {
     private By RentField = By.xpath(".//div[text()='* Срок аренды']");
     private By orderButtonMakeOrder = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']");
     private By orderButtonYes = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
-    private By orderDone = By.xpath(".//diu[text()='Заказ оформлен']");
+    private By checkOrderStatus = By.xpath(".//button[text()='Посмотреть статус']");
 
     public ScooterOrderPageTwo(WebDriver driver){
         this.driver = driver;
@@ -20,17 +20,17 @@ public class ScooterOrderPageTwo {
         driver.findElement(elementOfData).click();
     }
 
-    private void selectRent(int rent_quantity){
+    private void selectRent(int rentQuantity){
         driver.findElement(RentField).click();
-        String quantity_str = "сутки";
-        if (rent_quantity == 1) quantity_str = "сутки";
-        else if (rent_quantity == 2) quantity_str = "двое суток";
-        else if (rent_quantity == 3) quantity_str = "трое суток";
-        else if (rent_quantity == 4) quantity_str = "четверо суток";
-        else if (rent_quantity == 5) quantity_str = "пятеро суток";
-        else if (rent_quantity == 6) quantity_str = "шестеро суток";
-        else if (rent_quantity == 7) quantity_str = "семеро суток";
-        By elementOfListRent = By.xpath(".//div[text()='" + quantity_str + "']");
+        String quantityStr = "сутки";
+        if (rentQuantity == 1) quantityStr = "сутки";
+        else if (rentQuantity == 2) quantityStr = "двое суток";
+        else if (rentQuantity == 3) quantityStr = "трое суток";
+        else if (rentQuantity == 4) quantityStr = "четверо суток";
+        else if (rentQuantity == 5) quantityStr = "пятеро суток";
+        else if (rentQuantity == 6) quantityStr = "шестеро суток";
+        else if (rentQuantity == 7) quantityStr = "семеро суток";
+        By elementOfListRent = By.xpath(".//div[text()='" + quantityStr + "']");
         driver.findElement(elementOfListRent).click();
     }
 
@@ -47,8 +47,8 @@ public class ScooterOrderPageTwo {
         driver.findElement(orderButtonYes).click();
     }
 
-    public String getTextOrderDone(){
-        return driver.findElement(orderDone).getText();
+    public String getTextCheckStatus(){
+        return driver.findElement(checkOrderStatus).getText();
     }
 
     public void setOrderPageTwo(int day, int rent_quantity, String color) {

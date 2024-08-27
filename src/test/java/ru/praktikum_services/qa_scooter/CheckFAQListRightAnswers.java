@@ -1,14 +1,15 @@
 package ru.praktikum_services.qa_scooter;
-import page_obj.*;
+
+import pageObj.*;
+import ru.praktikum_services.qa_scooter.constants.Url;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -22,7 +23,7 @@ public class CheckFAQListRightAnswers {
     }
 
     @Parameterized.Parameters
-    public static Object[][] getCities() {
+    public static Object[][] getFAQRightAnswers() {
         return new Object[][] {
                 { "Сутки — 400 рублей. Оплата курьеру — наличными или картой.", 0},
                 { "Пока что у нас так: один заказ — один самокат. " +
@@ -41,13 +42,15 @@ public class CheckFAQListRightAnswers {
     }
     private WebDriver driver;
 
+    @Before
+    public void setDriver() {
+        driver = new ChromeDriver();
+        driver.get(Url.url);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
     @Test
     public void checkElementsOfList() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
         FAQListOnMainPage faqList = new FAQListOnMainPage(driver);
         assertEquals(text, faqList.getTextOfElementOfList(numOfLine));
     }
