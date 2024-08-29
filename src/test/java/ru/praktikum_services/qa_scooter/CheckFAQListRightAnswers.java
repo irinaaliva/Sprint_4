@@ -1,6 +1,6 @@
 package ru.praktikum_services.qa_scooter;
 
-import pageObj.*;
+import pageobj.*;
 import ru.praktikum_services.qa_scooter.constants.Url;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
